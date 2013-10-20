@@ -2,13 +2,13 @@ class Consecutive
 	
 	def initialize(string)
 		@string_to_check = string
-		@string_hash = {}
+		@char_count = {}
 		@most_consecutive = []
 	end
   
 	def max_consecutive_characters
-		@string_hash = CharCounter.new(@string_to_check).count_chars
-		@most_consecutive = HashAnalyzer.new(@string_hash).determine_most_consecutive
+		@char_count = CharCounter.new(@string_to_check).count_chars
+		@most_consecutive = HashAnalyzer.new(@char_count).determine_most_consecutive
 		
 		return @most_consecutive.sort
 	end
@@ -22,7 +22,7 @@ class CharCounter
 		@counter = 1
 		@prev_char = ""
 		@current_char = ""
-		@string_hash = {}
+		@char_count = {}
 	end
 	
 	def count_chars
@@ -33,17 +33,17 @@ class CharCounter
 			else
 				@counter = 1
 			end
-			if @string_hash[x] != nil
-				if @counter > @string_hash[x]
-					@string_hash[x] = @counter
+			if @char_count[x] != nil
+				if @counter > @char_count[x]
+					@char_count[x] = @counter
 				end
 			else 
-				@string_hash[x] = @counter
+				@char_count[x] = @counter
 			end
 			@prev_char = @current_char
 		end
 		
-		return @string_hash
+		return @char_count
 	end
 	
 end
@@ -51,19 +51,19 @@ end
 class HashAnalyzer
 	
 	def initialize(hash)
-		@string_hash = hash
+		@char_count = hash
 		@most_in_a_row = 0
 		@most_consecutive = []
 	end
 	
 	def determine_most_consecutive
-		@string_hash.each do |pair|
+		@char_count.each do |pair|
 			if pair[1] > @most_in_a_row
 				@most_in_a_row = pair[1]
 			end
 		end
 		
-		@string_hash.each do |pair|
+		@char_count.each do |pair|
 			if pair[1] == @most_in_a_row
 				@most_consecutive.push(pair[0])
 			end
