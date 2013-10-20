@@ -1,4 +1,4 @@
-string = "cat dog ___"
+string = "aaabba"
 string_hash = {}
 counter = 1
 prev_char = ""
@@ -13,7 +13,13 @@ string.each_char do |x|
 	else
 		counter = 1
 	end
-	string_hash[x] = counter
+	if string_hash[x] != nil
+		if counter > string_hash[x]
+			string_hash[x] = counter
+		end
+	else 
+		string_hash[x] = counter
+	end
 	prev_char = current_char
 end
 
