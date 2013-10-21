@@ -1,4 +1,5 @@
 class NonaryGame
+<<<<<<< HEAD
   def initialize
     @set = [1,2,3,4,5,6,7,8]         #set to be analyzed
     @magic_number = 5		#number that must be present in each subset
@@ -15,6 +16,25 @@ class NonaryGame
     #keep elements if they include the magic number or have the magic digital root value
     return @temp.flatten(1).keep_if {|x| x.include?(@magic_number) and DigitalRoot.new(x).has_value?(@magic_digital_root_value)}
   end
+=======
+
+	def initialize
+		@set = [1,2,3,4,5,6,7,8] #set to be analyzed
+		@magic_number = 5        #number that must be present in each subset
+		@magic_digital_root_value = 9  #digital root of each subset
+		@min_elements = 3        #minimum number of elements in each subset
+		@max_elements = 5        #maximum number of elements in each subset
+		@temp = []               #array to manipulate to find solution
+	end
+  
+	def valid_groups
+		#from 3 to 5, find all combinations of numbers with each number of elements
+		@min_elements.upto(@max_elements) {|x| @temp.push(@set.combination(x).to_a)}
+		#flatten array by 1 dimension to get a single array with all possible combinations
+		#keep elements if they include the magic number or have the magic digital root value
+		return @temp.flatten(1).keep_if {|x| x.include?(@magic_number) and DigitalRoot.new(x).has_value?(@magic_digital_root_value)}
+	end
+>>>>>>> commented
 end
 
 class DigitalRoot

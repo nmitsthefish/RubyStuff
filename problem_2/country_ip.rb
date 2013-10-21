@@ -1,4 +1,5 @@
 class CountryIp
+<<<<<<< HEAD
   def initialize 
     @line_array = []
     @country_name = ""
@@ -8,12 +9,28 @@ class CountryIp
   def search(ip_string)
     #determine the numerical value of the IP address
     numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
+=======
+	def initialize 
+		@line_array = []
+		@country_name = ""
+		@file = "IpToCountry.csv"
+  end
+  
+  def search(ip_string)
+		#determine the numerical value of the IP address
+		numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
+>>>>>>> commented
 	
     #find the country in the IP List with IP given
     @country_name = CountryExtractor.new(@file).get_country_name_with_ip(numerical_ip)
 	
+<<<<<<< HEAD
     #return country name
     return @country_name
+=======
+		#return country name
+		return @country_name
+>>>>>>> commented
   end
 end
 
@@ -28,11 +45,31 @@ class IpToNumberConverter
     @c = @ip_array[2].to_i
     @d = @ip_array[3].to_i
 		
+<<<<<<< HEAD
     #check conditions to make sure IP address is valid, raise exception if invalid
     if @ip_array.length != 4 or @a.to_s != @ip_array[0] or @b.to_s != @ip_array[1] or @c.to_s != @ip_array[2] or @d.to_s != @ip_array[3] or @a > 255 or @b > 255 or @c > 255 or @d > 255 or @a < 0 or @b < 0 or @c < 0 or @d < 0
       raise ArgumentError, "Invalid IP"
     end
   end
+=======
+		#check conditions to make sure IP address is valid, raise exception if invalid
+		if @ip_array.length != 4 or 
+			 @a.to_s != @ip_array[0] or 
+			 @b.to_s != @ip_array[1] or 
+			 @c.to_s != @ip_array[2] or 
+			 @d.to_s != @ip_array[3] or 
+			 @a > 255 or 
+			 @b > 255 or 
+			 @c > 255 or 
+			 @d > 255 or 
+			 @a < 0 or 
+			 @b < 0 or 
+			 @c < 0 or 
+			 @d < 0
+			raise ArgumentError, "Invalid IP"
+		end
+	end
+>>>>>>> commented
 	
   def get_numerical_representation
     #Numerical representation of IP address.
