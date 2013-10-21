@@ -32,15 +32,15 @@ class CharCounter
       if @current_char == @prev_char
         @counter += 1    #increment if same
       else
-	@counter = 1     #reset if different
+			  @counter = 1     #reset if different
       end
       #assign values to characters in hash
       if @char_count[x] != nil
- 	if @counter > @char_count[x]
+		    if @counter > @char_count[x]
           @char_count[x] = @counter
-	end
+	      end
       else 
-	@char_count[x] = @counter
+	      @char_count[x] = @counter
       end
       #set next previous character
       @prev_char = @current_char
@@ -60,7 +60,7 @@ class HashAnalyzer
     #iterate over hash and find which characters appear consecutively the most
     @char_count.each do |pair|
       if pair[1] > @most_in_a_row
-	@most_in_a_row = pair[1]
+	      @most_in_a_row = pair[1]
       end
     end
     #reiterate over hash and populate array with the characters that appear consecutively the most
