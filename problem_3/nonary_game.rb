@@ -12,9 +12,12 @@ class NonaryGame
     #from 3 to 5, find all combinations of numbers with each number of elements
     @min_elements.upto(@max_elements) {|x| @temp.push(@set.combination(x).to_a)}
     #flatten array by 1 dimension to get a single array with all possible combinations
-    #keep elements if they include the magic number or have the magic digital root value
-    return @temp.flatten(1).keep_if {|x| x.include?(@magic_number) and DigitalRoot.new(x).has_value?(@magic_digital_root_value)}
-  end
+		all_combinations = @temp.flatten(1)
+		#keep elements if they include the magic number or have the magic digital root value
+    solution = all_combinations.keep_if {|x| check_magic_values_in_array(x, @magic_number, @magic_digital_root_value)}
+		
+		return solution
+	end
 end
 
 class DigitalRoot
@@ -56,9 +59,13 @@ class DigitalRoot
   end	
 end
 
-
-
-
+	def check_magic_values_in_array(array, magic_number, magic_digital_root_value)
+		ret_val = false
+		if array.include?(magic_number) and DigitalRoot.new(array).has_value?(magic_digital_root_value)
+			ret_val = true
+		end
+		return ret_val
+	end
 
 
 
