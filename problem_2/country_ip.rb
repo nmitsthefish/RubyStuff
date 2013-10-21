@@ -1,21 +1,21 @@
 class CountryIp
   
-  def initialize
-    @line_array = []
-	@country_name = ""
-	@file = "IpToCountry.csv"
-  end
+	def initialize 
+  		@line_array = []
+		@country_name = ""
+		@file = "IpToCountry.csv"
+  	end
   
-  def search(ip_string)
-	#determine the numerical value of the IP address
-    numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
+  	def search(ip_string)
+		#determine the numerical value of the IP address
+		numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
 	
-	#find the country in the IP List with IP given
-	@country_name = CountryExtractor.new(@file).get_country_name_with_ip(numerical_ip)
+		#find the country in the IP List with IP given
+		@country_name = CountryExtractor.new(@file).get_country_name_with_ip(numerical_ip)
 	
-	#return country name
-	return @country_name
-  end
+		#return country name
+		return @country_name
+  	end
   
 end
 
@@ -38,8 +38,8 @@ class IpToNumberConverter
 	
 	def get_numerical_representation
 		#Numerical representation of IP address.
-        #Example: (from Right to Left)
-        #1.2.3.4 = 4 + (3 * 256) + (2 * 256 * 256) + (1 * 256 * 256 * 256)
+        	#Example: (from Right to Left)
+        	#1.2.3.4 = 4 + (3 * 256) + (2 * 256 * 256) + (1 * 256 * 256 * 256)
 		return (@d + (@c * 256) + (@b * 256**2) + (@a * 256**3)) 
 	end
 	
@@ -70,4 +70,3 @@ class CountryExtractor
 	
 end
 
-#print CountryIp.new.search("67.252.32.91")
