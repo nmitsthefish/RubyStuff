@@ -1,5 +1,4 @@
 class CountryIp
-  
 	def initialize 
 		@line_array = []
 		@country_name = ""
@@ -16,7 +15,6 @@ class CountryIp
 		#return country name
 		return @country_name
   	end
-  
 end
 
 class IpToNumberConverter
@@ -42,7 +40,6 @@ class IpToNumberConverter
         	#1.2.3.4 = 4 + (3 * 256) + (2 * 256 * 256) + (1 * 256 * 256 * 256)
 		return (@d + (@c * 256) + (@b * 256**2) + (@a * 256**3)) 
 	end
-	
 end
 
 class CountryExtractor
@@ -67,6 +64,5 @@ class CountryExtractor
 			end
 		end
 	end
-	
 end
 
