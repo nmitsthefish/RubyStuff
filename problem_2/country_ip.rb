@@ -1,7 +1,7 @@
 class CountryIp
   
 	def initialize 
-  		@line_array = []
+		@line_array = []
 		@country_name = ""
 		@file = "IpToCountry.csv"
   	end
