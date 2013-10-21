@@ -9,16 +9,10 @@ class CountryIp
     numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
 		File.open("IpToCountry.csv") do |file|
 			file.each_line do |line|
-				if line[0] != "#"
-					@line_array = line.split(",")
-					if numerical_ip > @line_array[0].delete("\"").to_i and numerical_ip < @line_array[1].delete("\"").to_i
-						@country_name = @line_array[6].delete("\"").chomp
-					end
-				
-				end
+				@country_name = CountryExtractor.new(line).get_country_name_from_ip(numerical_ip)
 			end
 		end
-	
+	puts @country_name
 	return @country_name
   end
   
@@ -40,6 +34,29 @@ class IpToNumberConverter
 		return (@d + (@c * 256) + (@b * 256**2) + (@a * 256**3)) 
 	end
 	
+end
+
+class CountryExtractor
+	def initialize(line)
+		@line_to_parse = line
+		@line_array = []
+		parse_line
+	end
+	
+	def parse_line
+		if @line_to_parse[0] != "#"
+			@line_array = @line_to_parse.split(",")
+		end
+	end
+	
+	def get_country_name_from_ip(numerical_ip)
+		if @line_array.length > 0
+			if numerical_ip > @line_array[0].delete("\"").to_i and numerical_ip < @line_array[1].delete("\"").to_i
+				
+				return @line_array[6].delete("\"").chomp
+			end
+		end
+	end
 end
 
 #print CountryIp.new.search("67.252.32.91")
