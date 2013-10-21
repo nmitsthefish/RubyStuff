@@ -32,7 +32,7 @@ class IpToNumberConverter
 		@c = @ip_array[2].to_i
 		@d = @ip_array[3].to_i
 		if @ip_array.length != 4 or @a.to_s != @ip_array[0] or @b.to_s != @ip_array[1] or @c.to_s != @ip_array[2] or @d.to_s != @ip_array[3] or @a > 255 or @b > 255 or @c > 255 or @d > 255
-			raise ArgumentError, Errno::ENOENT, "Invalid IP"
+			raise ArgumentError, "Invalid IP"
 		end
 	end
 	
