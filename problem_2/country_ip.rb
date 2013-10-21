@@ -37,8 +37,6 @@ class IpToNumberConverter
 	end
 	
 	def get_numerical_representation
-		
-		
 		return (@d + (@c * 256) + (@b * 256**2) + (@a * 256**3)) 
 	end
 	
