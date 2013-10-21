@@ -1,6 +1,6 @@
 class NonaryGame
 	def initialize
-		@set = [1,2,3,4,5,6,7,8]	#set to be analyzed
+		@set = [1,2,3,4,5,6,7,8]        #set to be analyzed
 		@magic_number = 5		#number that must be present in each subset
 		@magic_digital_root_value = 9	#digital root of each subset
 		@min_elements = 3        	#minimum number of elements in each subset
