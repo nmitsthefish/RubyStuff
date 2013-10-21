@@ -1,5 +1,5 @@
 class NonaryGame
-<<<<<<< HEAD
+
   def initialize
     @set = [1,2,3,4,5,6,7,8]         #set to be analyzed
     @magic_number = 5		#number that must be present in each subset
@@ -16,7 +16,7 @@ class NonaryGame
     #keep elements if they include the magic number or have the magic digital root value
     return @temp.flatten(1).keep_if {|x| x.include?(@magic_number) and DigitalRoot.new(x).has_value?(@magic_digital_root_value)}
   end
-=======
+
 
 	def initialize
 		@set = [1,2,3,4,5,6,7,8] #set to be analyzed
@@ -34,7 +34,7 @@ class NonaryGame
 		#keep elements if they include the magic number or have the magic digital root value
 		return @temp.flatten(1).keep_if {|x| x.include?(@magic_number) and DigitalRoot.new(x).has_value?(@magic_digital_root_value)}
 	end
->>>>>>> commented
+
 end
 
 class DigitalRoot
