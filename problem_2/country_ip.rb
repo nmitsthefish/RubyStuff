@@ -11,7 +11,7 @@ class CountryIp
     numerical_ip = IpToNumberConverter.new(ip_string).get_numerical_representation
 
     #find the country in the IP List with IP given
-    @country_name = CountryExtractor.new(@file).get_country_name_with_ip(numerical_ip)
+    @country_name = CountryExtractor.new(@file).get_country_name_from_ip(numerical_ip)
 	  
     #return country name
     return @country_name
@@ -61,7 +61,7 @@ class CountryExtractor
     @line_array = []
   end
 	
-  def get_country_name_with_ip(numerical_ip)
+  def get_country_name_from_ip(numerical_ip)
     #open file containing IP list
     File.open(@ip_list) do |file|
       file.each_line do |line|

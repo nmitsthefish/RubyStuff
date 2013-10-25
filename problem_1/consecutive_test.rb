@@ -42,5 +42,44 @@ class ConsecutiveTest < Test::Unit::TestCase
     c = Consecutive.new "aaabba"
     assert_equal %w(a), c.max_consecutive_characters
   end
-  
 end
+
+class CharCounterTest < Test::Unit::TestCase
+	def test_count_chars_should_return_a_hash
+    c = CharCounter.new "aaddddffffaa"
+    assert_kind_of Hash, c.count_chars
+  end
+
+	def test_number_of_chars_in_hash
+		c = CharCounter.new "123456789"
+		assert_equal 9, c.count_chars.length
+	end
+	
+	def test_count_chars_correctly
+		c = CharCounter.new "tesssst"
+		assert_equal 4, c.count_chars['s']
+	end
+
+	def test_proper_input_is_a_string
+		assert_raise(ArgumentError) do
+			c = CharCounter.new(1234)
+		end
+	end
+end
+
+class HashAnalyzerTest < Test::Unit::TestCase
+	
+	def test_determine_most_consecutive_should_return_an_array
+    test_hash = { "a" => 1, "b" => 2, "c" => 1 }
+		c = HashAnalyzer.new test_hash
+    assert_kind_of Array, c.determine_most_consecutive
+  end
+	
+	def test_proper_input_is_hash
+		assert_raise(ArgumentError) do
+			c = HashAnalyzer.new(1234)
+		end
+	end
+end
+
+

@@ -6,7 +6,7 @@ class Consecutive
   end
   
   def max_consecutive_characters
-    #populate hash from given string
+    #populate hash of characters:number of consecutive appearances from given string
     @char_count = CharCounter.new(@string_to_check).count_chars
 		
     #determines the most consecutive with a hash analyzer object
@@ -18,6 +18,7 @@ end
 
 class CharCounter
   def initialize(string)
+		raise ArgumentError, 'Argument is not a String' unless string.is_a? String  
     @string_to_check = string
     @counter = 1
     @prev_char = ""
@@ -28,29 +29,42 @@ class CharCounter
   def count_chars
     @string_to_check.each_char do |x|
       @current_char = x
-      #compare current character with the previous character
-      if @current_char == @prev_char
-        @counter += 1    #increment if same
-      else
-			  @counter = 1     #reset if different
-      end
+			
+      #update counter if character is consecutive, reset if not
+      update_consecutive_counter
+			
       #assign values to characters in hash
-      if @char_count[x] != nil
-		    if @counter > @char_count[x]
-          @char_count[x] = @counter
-	      end
-      else 
-	      @char_count[x] = @counter
-      end
+      add_character_to_hash
+			
       #set next previous character
       @prev_char = @current_char
     end
     return @char_count
   end
+
+	def update_consecutive_counter
+		if @current_char == @prev_char
+        @counter += 1    #increment if same
+      else
+			  @counter = 1     #reset if different
+      end
+	end
+	
+	def add_character_to_hash
+		if @char_count[@current_char] != nil          #if char is already in hash
+		    if @counter > @char_count[@current_char]  #and counter is greater than current value  
+          @char_count[@current_char] = @counter   #update the value 
+	      end
+      else 
+	      @char_count[@current_char] = @counter     #add character and value if not already in hash
+      end
+	end
+	
 end
 
 class HashAnalyzer
   def initialize(hash)
+		raise ArgumentError, 'Argument is not a Hash' unless hash.is_a? Hash
     @char_count = hash
     @most_in_a_row = 0
     @most_consecutive = []
@@ -73,4 +87,3 @@ class HashAnalyzer
     return @most_consecutive
   end
 end
-
