@@ -8,7 +8,7 @@ class NonaryGame
   def initialize
     @set = SET_TO_ANALYZE         #set to be analyzed
     @magic_number = MAGIC_NUMBER		#number that must be present in each subset
-    @magic_digital_root_value = MAGIC_DIGITAL_ROOT_VALUE #digital root of each subset
+    @magic_digital_root_value = MAGIC_DIGITAL_ROOT_VALUE #necessary digital root of each subset
     @min_elements = MIN_ELEMENTS  	#minimum number of elements in each subset
     @max_elements = MAX_ELEMENTS #maximum number of elements in each subset
     @temp = []		       #array to manipulate to find solution

@@ -40,3 +40,7 @@ class CountryIpTest < Test::Unit::TestCase
   end
   
 end
+
+class IpToNumberConverterTest < Test::Unit::TestCase
+	 
+end

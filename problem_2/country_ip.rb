@@ -1,5 +1,4 @@
 class CountryIp
-  
   def initialize 
     @line_array = []
     @country_name = ""
@@ -23,29 +22,34 @@ class IpToNumberConverter
     #split IP address into its 4 components and put in array
     @ip_array = ip.split(".")
 		
-    #convert each string value to its integer value
+		#convert each string value to its integer value
     @a = @ip_array[0].to_i
     @b = @ip_array[1].to_i
     @c = @ip_array[2].to_i
     @d = @ip_array[3].to_i
 		
+		#check each value to ensure validity
+		is_valid_ip(@a, @b, @c, @d)
+  end
+	
+	def is_valid_ip(a, b, c, d)
     #check conditions to make sure IP address is valid, raise exception if invalid
     if @ip_array.length != 4 or 
-       @a.to_s != @ip_array[0] or 
-       @b.to_s != @ip_array[1] or 
-       @c.to_s != @ip_array[2] or 
-       @d.to_s != @ip_array[3] or 
-       @a > 255 or 
-       @b > 255 or 
-       @c > 255 or 
-       @d > 255 or 
-       @a < 0 or 
-       @b < 0 or 
-       @c < 0 or 
-       @d < 0
+       a.to_s != @ip_array[0] or 
+       b.to_s != @ip_array[1] or 
+       c.to_s != @ip_array[2] or 
+       d.to_s != @ip_array[3] or 
+       a > 255 or 
+       b > 255 or 
+       c > 255 or 
+       d > 255 or 
+       a < 0 or 
+       b < 0 or 
+       c < 0 or 
+       d < 0
          raise ArgumentError, "Invalid IP"
     end
-  end
+	end
 	
   def get_numerical_representation
     #Numerical representation of IP address.
