@@ -83,6 +83,6 @@ class HashAnalyzer
         @most_consecutive.push(pair[0])
       end
     end
-		return @most_consecutive
+    return @most_consecutive
   end
 end
