@@ -35,19 +35,19 @@ class IpToNumberConverter
 	def is_valid_ip(a, b, c, d)
     #check conditions to make sure IP address is valid, raise exception if invalid
     if @ip_array.length != 4 or 
-       a.to_s != @ip_array[0] or 
-       b.to_s != @ip_array[1] or 
-       c.to_s != @ip_array[2] or 
-       d.to_s != @ip_array[3] or 
-       a > 255 or 
-       b > 255 or 
-       c > 255 or 
-       d > 255 or 
-       a < 0 or 
-       b < 0 or 
-       c < 0 or 
-       d < 0
-         raise ArgumentError, "Invalid IP"
+      a.to_s != @ip_array[0] or 
+      b.to_s != @ip_array[1] or 
+      c.to_s != @ip_array[2] or 
+      d.to_s != @ip_array[3] or 
+      a > 255 or 
+      b > 255 or 
+      c > 255 or 
+      d > 255 or 
+      a < 0 or 
+      b < 0 or 
+      c < 0 or 
+      d < 0
+        raise ArgumentError, "Invalid IP"
     end
 	end
 	
@@ -70,14 +70,14 @@ class CountryExtractor
     File.open(@ip_list) do |file|
       file.each_line do |line|
         #disregard commented lines
-	if line[0] != "#"
-	  #split each entry into its components
-	  @line_array = line.split(",")
-	  #return country name if numerical IP is within the values of that entry
-	  if numerical_ip > @line_array[0].delete("\"").to_i and numerical_ip < @line_array[1].delete("\"").to_i
-	    return @line_array[6].delete("\"").chomp
-	  end
-	end
+	      if line[0] != "#"
+	        #split each entry into its components
+	        @line_array = line.split(",")
+	        #return country name if numerical IP is within the values of that entry
+          if numerical_ip > @line_array[0].delete("\"").to_i and numerical_ip < @line_array[1].delete("\"").to_i
+            return @line_array[6].delete("\"").chomp
+          end
+        end
       end
     end
   end

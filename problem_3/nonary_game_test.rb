@@ -29,25 +29,25 @@ class NonaryGameTest < Test::Unit::TestCase
 end
 
 class DigitalRootTest < Test::Unit::TestCase
-	def test_input_is_non_numerical_string
-		assert_raise(ArgumentError) { dr = DigitalRoot.new("test") }
-	end
+  def test_input_is_non_numerical_string
+    assert_raise(ArgumentError) { dr = DigitalRoot.new("test") }
+  end
 	
-	def test_input_is_non_numerical_array
-		assert_raise(ArgumentError) { dr = DigitalRoot.new(["t","es","t","2"]) }
-	end
+  def test_input_is_non_numerical_array
+    assert_raise(ArgumentError) { dr = DigitalRoot.new(["t","es","t","2"]) }
+  end
 	 
-	def test_input_is_invalid_type
-		assert_raise(ArgumentError) { dr = DigitalRoot.new({'b'=>2, 'a'=>1}) }
-	end
+  def test_input_is_invalid_type
+    assert_raise(ArgumentError) { dr = DigitalRoot.new({'b'=>2, 'a'=>1}) }
+  end
 	
-	def test_digital_root_is_correct
-		dr = DigitalRoot.new("2437")
-		assert_equal true, dr.has_value?(7)
-	end
+  def test_digital_root_is_correct
+    dr = DigitalRoot.new("2437")
+    assert_equal true, dr.has_value?(7)
+  end
 	
-	def test_digital_root_is_correct_from_array
-		dr = DigitalRoot.new(["2","43","7"])
-		assert_equal true, dr.has_value?(7)
-	end
+  def test_digital_root_is_correct_from_array
+    dr = DigitalRoot.new(["2","43","7"])
+    assert_equal true, dr.has_value?(7)
+  end
 end

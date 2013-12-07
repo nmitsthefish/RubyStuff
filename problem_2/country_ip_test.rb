@@ -24,7 +24,7 @@ class CountryIpTest < Test::Unit::TestCase
   end
 
   def test_csv_file_not_changed
-    assert_equal '22620fdd50ebaef84dd3d9521beb6a7c', `md5 -q IpToCountry.csv`.strip
+    assert_equal '22620fdd50ebaef84dd3d9521beb6a7c', `md5 -q IpToCountry.csv`.strip #I believe this is a unix command on OSX? Wouldn't work on my windows or linux environments
   end
   
   def test_67_99_163_76_is_United_States
@@ -39,8 +39,4 @@ class CountryIpTest < Test::Unit::TestCase
     assert_equal "Brazil", @country_ip.search("200.100.100.100")
   end
   
-end
-
-class IpToNumberConverterTest < Test::Unit::TestCase
-	 
 end

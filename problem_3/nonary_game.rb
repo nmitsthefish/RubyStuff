@@ -1,9 +1,9 @@
 class NonaryGame
-	SET_TO_ANALYZE = [1,2,3,4,5,6,7,8]
-	MAGIC_NUMBER = 5
-	MAGIC_DIGITAL_ROOT_VALUE = 9
-	MIN_ELEMENTS = 3
-	MAX_ELEMENTS = 5
+  SET_TO_ANALYZE = [1,2,3,4,5,6,7,8]
+  MAGIC_NUMBER = 5
+  MAGIC_DIGITAL_ROOT_VALUE = 9
+  MIN_ELEMENTS = 3
+  MAX_ELEMENTS = 5
 	
   def initialize
     @set = SET_TO_ANALYZE         #set to be analyzed
@@ -12,7 +12,7 @@ class NonaryGame
     @min_elements = MIN_ELEMENTS  	#minimum number of elements in each subset
     @max_elements = MAX_ELEMENTS #maximum number of elements in each subset
     @temp = []		       #array to manipulate to find solution
-    end
+  end
     
   def valid_groups
     #from 3 to 5, find all combinations of numbers with each number of elements
@@ -26,22 +26,22 @@ class NonaryGame
 		
     return solution
   end
-	
-	def has_magic_values?(array, magic_number, magic_digital_root_value)
-		ret_val = false
-		digital_root = DigitalRoot.new(array)
-		#check if the array of numbers has both the specified magic values
-		if array.include?(magic_number) and digital_root.has_value?(magic_digital_root_value)
-			ret_val = true
-		end
-		return ret_val
-	end
+	 
+  def has_magic_values?(array, magic_number, magic_digital_root_value)
+    ret_val = false
+    digital_root = DigitalRoot.new(array)
+    #check if the array of numbers has both the specified magic values
+    if array.include?(magic_number) and digital_root.has_value?(magic_digital_root_value)
+      ret_val = true
+    end
+    return ret_val
+  end
 end
 
 class DigitalRoot
   def initialize(number)
-		#check if argument is valid
-		check_argument(number)
+    #check if argument is valid
+    check_argument(number)
 			
     #store the digital root of the number
     @digital_root = digital_root_of(@number)
@@ -68,30 +68,30 @@ class DigitalRoot
     end
     return ret_val
   end	
-	
-	def convert_arg_to_string(number)
-		#convert all valid inputs to a string
-		if number.is_a?(Integer)
+	 
+  def convert_arg_to_string(number)
+    #convert all valid inputs to a string
+    if number.is_a?(Integer)
       @number = number.to_s
     elsif number.is_a?(Array)
       @number = number.join()
     elsif number.is_a?(String)
       @number = number
-		end
-	end
-	
-	def check_argument(number)
-		#check if argument is of type String, Integer or Array
-		raise ArgumentError, 'Argument must be a String, Integer, or Array' unless 
-			number.is_a?(String) || number.is_a?(Integer) || number.is_a?(Array)
+    end
+  end
+	 
+  def check_argument(number)
+    #check if argument is of type String, Integer or Array
+    raise ArgumentError, 'Argument must be a String, Integer, or Array' unless 
+      number.is_a?(String) || number.is_a?(Integer) || number.is_a?(Array)
     
-		#convert the argument to a string for manipulation
+    #convert the argument to a string for manipulation
     convert_arg_to_string(number)
   
-		#check if argument was numeric
-		raise ArgumentError, 'Argument must be a numeric value' if
-			@number.to_i.to_s != @number
-	end
+    #check if argument was numeric
+    raise ArgumentError, 'Argument must be a numeric value' if
+      @number.to_i.to_s != @number
+  end
 end
 
 	
